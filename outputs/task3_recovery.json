@@ -1,0 +1,77 @@
+{
+    "recovery": {
+        "success": true,
+        "attempts": 3,
+        "result": {
+            "status": "success",
+            "order_id": "ORD-3001",
+            "amount": 3500,
+            "transaction_id": "TXN-ORD-3001"
+        },
+        "next_action": "continue_workflow",
+        "trace": [
+            {
+                "attempt": 1,
+                "outcome": "retryable_failure",
+                "error_type": "DependencyTimeout",
+                "error": "Payment gateway timed out",
+                "backoff_seconds": 1.0,
+                "next_action": "retry"
+            },
+            {
+                "attempt": 2,
+                "outcome": "retryable_failure",
+                "error_type": "TransientDependencyError",
+                "error": "Temporary payment gateway failure",
+                "backoff_seconds": 2.0,
+                "next_action": "retry"
+            },
+            {
+                "attempt": 3,
+                "outcome": "success",
+                "next_action": "continue"
+            }
+        ]
+    },
+    "replay": {
+        "success": true,
+        "next_action": "return_cached_result",
+        "payment_side_effect_count": 1
+    },
+    "malformed_response": {
+        "success": false,
+        "error_type": "MalformedResponseError",
+        "next_action": "quarantine_and_review"
+    },
+    "retry_exhaustion": {
+        "success": false,
+        "attempts": 3,
+        "next_action": "operator_review",
+        "trace": [
+            {
+                "attempt": 1,
+                "outcome": "retryable_failure",
+                "error_type": "DependencyTimeout",
+                "error": "Payment gateway timed out",
+                "backoff_seconds": 1.0,
+                "next_action": "retry"
+            },
+            {
+                "attempt": 2,
+                "outcome": "retryable_failure",
+                "error_type": "DependencyTimeout",
+                "error": "Payment gateway timed out",
+                "backoff_seconds": 2.0,
+                "next_action": "retry"
+            },
+            {
+                "attempt": 3,
+                "outcome": "retryable_failure",
+                "error_type": "DependencyTimeout",
+                "error": "Payment gateway timed out",
+                "backoff_seconds": null,
+                "next_action": "operator_review"
+            }
+        ]
+    }
+}

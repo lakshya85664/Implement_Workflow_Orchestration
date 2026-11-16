@@ -1,0 +1,30 @@
+{
+    "run_id": "RUN-ORD-2001",
+    "status": "completed",
+    "success": true,
+    "output": {
+        "order_id": "ORD-2001",
+        "customer_id": "CUST-201",
+        "payment": {
+            "status": "authorized",
+            "order_id": "ORD-2001",
+            "amount": 4999.0,
+            "transaction_id": "TXN-ORD-2001"
+        },
+        "packing": {
+            "status": "packed",
+            "items_count": 3
+        },
+        "shipping": {
+            "status": "shipment_created",
+            "tracking_id": "SHIP-ORD-2001"
+        },
+        "completed_tasks": [
+            "packing",
+            "payment",
+            "shipping",
+            "validate"
+        ]
+    },
+    "error": null
+}

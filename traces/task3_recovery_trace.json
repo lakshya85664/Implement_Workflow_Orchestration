@@ -1,0 +1,23 @@
+[
+    {
+        "attempt": 1,
+        "outcome": "retryable_failure",
+        "error_type": "DependencyTimeout",
+        "error": "Payment gateway timed out",
+        "backoff_seconds": 1.0,
+        "next_action": "retry"
+    },
+    {
+        "attempt": 2,
+        "outcome": "retryable_failure",
+        "error_type": "TransientDependencyError",
+        "error": "Temporary payment gateway failure",
+        "backoff_seconds": 2.0,
+        "next_action": "retry"
+    },
+    {
+        "attempt": 3,
+        "outcome": "success",
+        "next_action": "continue"
+    }
+]

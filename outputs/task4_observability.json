@@ -1,0 +1,83 @@
+{
+    "payment_response": {
+        "status": "success",
+        "order_id": "ORD-4001",
+        "amount": 4500,
+        "transaction_id": "TXN-ORD-4001"
+    },
+    "status": {
+        "state": "completed",
+        "last_event": "payment.succeeded"
+    },
+    "trace": [
+        {
+            "trace_id": "0ae9bc2d-8a23-4962-b64c-3f942a0aaeb7",
+            "run_id": "RUN-4001",
+            "event": "payment.started",
+            "state": "running",
+            "timestamp": "2026-11-16T03:45:24.368989+00:00",
+            "details": {
+                "order_id": "ORD-4001",
+                "amount": 4500
+            }
+        },
+        {
+            "trace_id": "5778e1a3-66f9-4aea-a345-fa503264e0b6",
+            "run_id": "RUN-4001",
+            "event": "payment.succeeded",
+            "state": "completed",
+            "timestamp": "2026-11-16T03:45:24.370675+00:00",
+            "details": {
+                "order_id": "ORD-4001",
+                "transaction_id": "TXN-ORD-4001",
+                "latency_ms": 1.693
+            }
+        },
+        {
+            "trace_id": "3ebe9f8d-0aad-4274-8709-18e3477596ee",
+            "run_id": "RUN-4001",
+            "event": "payment.started",
+            "state": "running",
+            "timestamp": "2026-11-16T06:07:56.977895+00:00",
+            "details": {
+                "order_id": "ORD-4001",
+                "amount": 4500,
+                "timeout_seconds": 2.0
+            }
+        },
+        {
+            "trace_id": "e1766600-6fc5-4d4e-b104-4927fc77cffd",
+            "run_id": "RUN-4001",
+            "event": "payment.succeeded",
+            "state": "completed",
+            "timestamp": "2026-11-16T06:07:56.978184+00:00",
+            "details": {
+                "order_id": "ORD-4001",
+                "transaction_id": "TXN-ORD-4001",
+                "latency_ms": 0.297
+            }
+        }
+    ],
+    "metrics": {
+        "runs": {
+            "started": 1,
+            "succeeded": 1,
+            "failed": 0,
+            "success_rate_percent": 100.0
+        },
+        "dependencies": {
+            "calls": 1,
+            "failures": 0,
+            "total_attempts": 1,
+            "failure_rate_percent": 0.0
+        },
+        "latency": {
+            "total_ms": 0.297,
+            "max_ms": 0.297,
+            "average_ms": 0.297
+        },
+        "queue": {
+            "total_age_seconds": 2.5
+        }
+    }
+}

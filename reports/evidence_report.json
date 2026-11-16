@@ -1,0 +1,74 @@
+{
+    "topic": "Topic 1 - Workflow Orchestration",
+    "project": "Order Fulfillment Workflow",
+    "overall_status": "completed",
+    "total_marks": 100,
+    "total_tests": 34,
+    "assessment_tasks": {
+        "task1": {
+            "name": "Workflow contract and state model",
+            "marks": 15,
+            "tests": 6,
+            "status": "completed"
+        },
+        "task2": {
+            "name": "Orchestration implementation",
+            "marks": 25,
+            "tests": 5,
+            "status": "completed"
+        },
+        "task3": {
+            "name": "Failure, retry and replay safety",
+            "marks": 20,
+            "tests": 9,
+            "status": "completed"
+        },
+        "task4": {
+            "name": "Integration and observability",
+            "marks": 20,
+            "tests": 7,
+            "status": "completed"
+        },
+        "task5": {
+            "name": "Operator runbook and evidence report",
+            "marks": 20,
+            "tests": 7,
+            "status": "completed"
+        }
+    },
+    "verified_behaviors": [
+        "Order input validation",
+        "Legal workflow state transitions",
+        "Sequential order fulfillment orchestration",
+        "Payment adapter integration with the orchestrator",
+        "Transient dependency failure recovery",
+        "Timeout and bounded retry handling",
+        "Permanent failure classification",
+        "Malformed response quarantine",
+        "Duplicate payment protection through idempotency keys",
+        "Cached result handling for duplicate workflow runs",
+        "Structured event tracing",
+        "Secret redaction in observability records",
+        "Dependency metrics and latency measurements",
+        "Operator actions for workflow states"
+    ],
+    "evidence_files": [
+        "outputs/task2_happy_path.json",
+        "outputs/task3_recovery.json",
+        "outputs/task4_observability.json",
+        "traces/task3_recovery_trace.json",
+        "traces/task4_events.jsonl",
+        "reports/OPERATOR_RUNBOOK.md",
+        "reports/evidence_report.json"
+    ],
+    "known_limitations": [
+        "The payment gateway is a local fake implementation.",
+        "Retry backoff durations are calculated and recorded but are not actually slept.",
+        "Idempotency and workflow run caches are in-memory and are not durable across process restarts.",
+        "The fake gateway uses a cooperative deadline check; this does not cancel arbitrary blocking external network operations.",
+        "A production payment adapter should enforce timeouts through its HTTP client or transport layer.",
+        "A production deployment requires durable idempotency storage and persistent workflow state.",
+        "Metrics are collected in process memory.",
+        "The implementation does not include a distributed transaction coordinator."
+    ]
+}
